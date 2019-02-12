@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title of the document</title>
+    <script src="css/jquery.min.js"></script>
+   
+</head>
+
+<body>
+<table>
+    <tr align="center">
+        <td><hr>
+            Hot Drinks<hr>
+        </td>
+        <td><hr>
+            Price<hr>
+        </td>
+        <td><hr>
+            Quantity<hr>
+        </td>
+    </tr>
+    <form name="calcuccino">
+        <tr>
+            <td>
+                Cappuccino
+            </td>
+            <td align="center">
+                $3.00
+            </td>
+            <td align="center">
+    <input type="number" id="quantityCappucino" name="quantityCappuccino" value="0" onchange="calculatePrice()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Espresso
+            </td>
+            <td align="center">
+                $2.25
+            </td>
+            <td align="center">
+    <input type="number" id="quantityEspresso" name="quantityEspresso" value="0" onchange="calculatePrice()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Latte
+            </td>
+            <td align="center">
+                $2.50
+            </td>
+            <td align="center">
+        <input type="number" id="quantityLatte" name="quantityLatte" value="0" onchange="calculatePrice()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Iced
+            </td>
+            <td align="center">
+                $2.50
+            </td>
+            <td align="center">
+                <input type="number" id="quantityIced" name="quantityIced" value="0" onchange="calculatePrice()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <hr>
+                <input type="checkbox" id="takeaway" name="takeaway" onchange="calculatePrice()">Takeaway?</option>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br>
+                <button type="button" onclick="calculatePrice()">Submit Order</button>
+            </td>
+            <td>
+            </td>
+            <td>
+                <br>
+                <hr>
+                Order total: <b>$</b>
+                <input type="text"  name="orderTotal" id="orderTotal" Size=6 readonly>
+            </td>
+        </tr>
+        </form>
+</table>
+
+<script type="text/javascript">
+    
+    $("#orderTotal").click(function () {
+        calculatePrice();
+    });
+
+    function calculatePrice()
+    {
+        //select data
+        var cappuccino = 3.00;
+        var espresso = 2.25;
+        var latte = 2.50;
+        var iced = 2.50;
+
+        var quantityCappuccino = $("#quantityCappucino").val();
+        var quantityEspresso =  $("#quantityEspresso").val();
+        var quantityLatte =  $("#quantityLatte").val();
+        var quantityIced = $("#quantityIced").val();
+
+        //calculate final cost
+        var total = (quantityCappuccino * cappuccino) + (quantityEspresso * espresso) + (quantityLatte * latte) + (quantityIced * iced);
+
+        console.log(total);
+        //print value to orderTotal
+        $("#orderTotal").val(total);
+    }
+</script>
+
+</body>
+</html>
